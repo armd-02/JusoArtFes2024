@@ -35,10 +35,10 @@
                     "type": "text",
                     "gsheet": "genre"
                 },
-                "datetime": {
+                "eventdate": {
                     "glot": "act_datetime",
                     "type": "textarea",
-                    "gsheet": "datetime"
+                    "gsheet": "eventdate"
                 },
                 "enter": {
                     "glot": "act_enter",
