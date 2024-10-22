@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", function () {
 			winCont.download(Conf.listTable.download); // download view:true/false
 			cMapMaker.mode_change("map"); // initialize last_modetime
 			winCont.menu_make(Conf.menu.main, "main_menu");
-			winCont.mouseDragScroll(images, cMapMaker.viewImage); // set Drag Scroll on images
+			winCont.mouseDragScroll(images, cMapMaker.viewImageList); // set Drag Scroll on images
 			glot.render();
 
 			const init_close = function () {
