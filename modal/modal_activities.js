@@ -221,6 +221,13 @@ class modal_Activities {
                 winCont.closeModal();
             },
             callback_yes: () => {
+                function escapeUnicode(str) {
+                    return str.replace(/[^\0-~]/g, function (ch) {
+                        var code = ch.charCodeAt(0).toString(16);
+                        return "//u" + ("000" + code).slice(-4);
+                    }).replace(/\n/g, '<br>').replace(/\r/g, '<br>');
+                }
+
                 winCont.modal_progress(0);
                 let userid = document.getElementById("act_userid").value;
                 let passwd = document.getElementById("act_passwd").value;
@@ -230,7 +237,11 @@ class modal_Activities {
                     let senddata = { id: act_id.value, osmid: act_osmid.value };
                     Object.keys(act[fname].form).forEach((key) => {
                         let field = act[fname].form[key];
-                        if (field.gsheet !== "" && field.gsheet !== undefined) senddata[field.gsheet] = document.getElementById("act_" + key).value;
+                        if (field.gsheet !== "" && field.gsheet !== undefined) {
+                            //let value = encodeURI(document.getElementById("act_" + key).value);
+                            let value = escapeUnicode(document.getElementById("act_" + key).value);
+                            senddata[field.gsheet] = value;
+                        }
                     });
                     gSheet
                         .get_salt(Conf.google.AppScript, userid)
