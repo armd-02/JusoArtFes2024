@@ -27,22 +27,22 @@
                 },
                 "actor": {
                     "glot": "act_actor",
-                    "type": "textarea",
+                    "type": "text",
                     "gsheet": "actor"
                 },
-                "genre":{
+                "genre": {
                     "glot": "act_genre",
                     "type": "text",
                     "gsheet": "genre"
                 },
                 "eventdate": {
                     "glot": "act_datetime",
-                    "type": "textarea",
+                    "type": "text",
                     "gsheet": "eventdate"
                 },
                 "enter": {
                     "glot": "act_enter",
-                    "type": "textarea",
+                    "type": "text",
                     "gsheet": "enter"
                 },
                 "fee": {
