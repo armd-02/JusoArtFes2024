@@ -41,21 +41,24 @@ class modal_Activities {
                         case "date":
                             chtml += `<div class='col-12'>${glot.get(form[key].glot)}</div><div class='col-12'>${basic.formatDate(new Date(gdata), "YYYY/MM/DD")}</div>`;
                             break;
+                        case "textarea":
+                            gdata = basic.autoLink(gdata);
+                            chtml += `<div class='col-12'><p><span class="fw-bold"><small>${glot.get(form[key].glot)}</span></small><big>${gdata.replace(/\r?\n/g, "<br>")}</big></p></div>`;
+                            break;
                         case "select":
                         case "text":
-                        case "textarea":
                         case "quiz_choice":
                             if (key !== "quiz_answer" && key !== "title" && gdata !== "") {
                                 gdata = basic.autoLink(gdata);
-                                chtml += `<div class='col-12'><span class="fw-bold">${glot.get(form[key].glot)}</span>${gdata.replace(/\r?\n/g, "<br>")}</div>`;
+                                chtml += `<div class='col-12'><p><span class="fw-bold"><small>${glot.get(form[key].glot)}</span></small>${gdata.replace(/\r?\n/g, "<br>")}</p></div>`;
                             }
                             break;
                         case "quiz_textarea":
-                            chtml += `<div class='col-12'>${glot.get(form[key].glot)}</div><div class='col-12'>${gdata.replace(/\r?\n/g, "<br>")}</div>`;
+                            chtml += `<div class='col-12 p-1'>${glot.get(form[key].glot)}</div><div class='col-12'>${gdata.replace(/\r?\n/g, "<br>")}</div>`;
                             break;
                         case "url":
                             if (gdata !== "http://" && gdata !== "https://" && gdata !== "") {
-                                chtml += `<div class='col-12'><span class="fw-bold">${glot.get(form[key].glot)}</span><a href="${gdata}">${gdata}</a></div>`;
+                                chtml += `<div class='col-12'><p><span class="fw-bold"><small>${glot.get(form[key].glot)}</span></small><a href="${gdata}">${gdata}</a></p></div>`;
                             }
                             break;
                         case "image_url":
@@ -221,13 +224,6 @@ class modal_Activities {
                 winCont.closeModal();
             },
             callback_yes: () => {
-                function escapeUnicode(str) {
-                    return str.replace(/[^\0-~]/g, function (ch) {
-                        var code = ch.charCodeAt(0).toString(16);
-                        return "//u" + ("000" + code).slice(-4);
-                    }).replace(/\n/g, '<br>').replace(/\r/g, '<br>');
-                }
-
                 winCont.modal_progress(0);
                 let userid = document.getElementById("act_userid").value;
                 let passwd = document.getElementById("act_passwd").value;
@@ -237,11 +233,7 @@ class modal_Activities {
                     let senddata = { id: act_id.value, osmid: act_osmid.value };
                     Object.keys(act[fname].form).forEach((key) => {
                         let field = act[fname].form[key];
-                        if (field.gsheet !== "" && field.gsheet !== undefined) {
-                            //let value = encodeURI(document.getElementById("act_" + key).value);
-                            let value = escapeUnicode(document.getElementById("act_" + key).value);
-                            senddata[field.gsheet] = value;
-                        }
+                        if (field.gsheet !== "" && field.gsheet !== undefined) senddata[field.gsheet] = document.getElementById("act_" + key).value;
                     });
                     gSheet
                         .get_salt(Conf.google.AppScript, userid)
