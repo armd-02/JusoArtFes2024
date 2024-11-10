@@ -2,6 +2,7 @@
     "osm": {
         "JusoArtFes2024": {
             "overpass": [
+                "node[\"place\"=\"neighbourhood\"]",
                 "nwr[\"amenity\"]",
                 "nwr[\"shop\"]",
                 "nwr[\"craft\"]",
@@ -12,6 +13,7 @@
                 "nwr[\"leisure\"]"
             ],
             "tags": [
+                "place",
                 "shop",
                 "amenity!=parking",
                 "amenity!=vending_machine",

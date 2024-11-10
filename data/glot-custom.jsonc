@@ -27,6 +27,10 @@
         "ja": "十三アートフェスマップ2024のデータはOpenStreetMapと独自データを組み合わせています。</a>",
         "en": "The data of Juso Art-fes Map 2024 is a combination of OpenStreetMap and original.</a>"
     },
+    "Link-ShinMiku-Map":{
+        "ja": "新大阪・三国アートフェスマップ2024を開く",
+        "en": "Open Shin-Osaka/Mikuni Art Festival Map 2024"
+    },
     "more_message": {
         "ja": "",
         "en": ""
