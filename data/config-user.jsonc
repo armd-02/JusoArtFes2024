@@ -87,11 +87,6 @@
                 "divider": true
             },
             {
-                "glot-model": "Link-ShinMiku-Map",
-                "linkto": "https://armd-02.github.io/ShinMikuArtFes2024/",
-                "divider": true
-            },
-            {
                 "glot-model": "licence_title",
                 "linkto": "javascript:cMapMaker.licence()",
                 "divider": false
