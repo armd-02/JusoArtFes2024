@@ -70,7 +70,7 @@
         "targetName": "activity"
     },
     "static": {
-        "mode": false,
+        "mode": true,
         "osmjson": "./data/JusoArtFes2024.json"
     },
     "menu": {
